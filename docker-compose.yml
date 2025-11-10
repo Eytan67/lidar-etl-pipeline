@@ -1,0 +1,22 @@
+services:
+  pg:
+    image: pgpointcloud/pointcloud:latest
+    shm_size: '1g'
+    environment:
+      POSTGRES_USER: lidar
+      POSTGRES_PASSWORD: lidar123
+      POSTGRES_DB: lidar
+    ports:
+      - "5432:5432"
+
+  etl:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      depends_on:
+        - pg
+      volumes:
+        - ./data:/data
+        - ./scripts:/app
+      working_dir: /app
+      command: tail -f /dev/null

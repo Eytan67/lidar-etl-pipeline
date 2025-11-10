@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.env
+*.las
+*.laz
+venv/
+.envrc
+*.log
+docker-compose.override.yml
+*.swp
+*.swo
+.DS_Store
+*.egg-info/
+dist/
+build/
